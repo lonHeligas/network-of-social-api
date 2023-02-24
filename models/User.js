@@ -6,14 +6,14 @@ const userSchema = new mongoose.Schema(
     username: {
       type: String,
       unique: true,
-      requires: true,
+      required: true,
       trim: true
     }
   },
   {
     email: {
       type: String,
-      requires: true,
+      required: true,
       unique: true,
       match: [/.+@.+\..+/, 'Must match an email address.'],
     }
@@ -34,12 +34,12 @@ const userSchema = new mongoose.Schema(
   }
 )
 
-userSchema
-  .virtual('friendCount')
-  .get(function(){
-    // todo return =something.length; 
-    // ! not finished
-  })
+// userSchema
+//   .virtual('friendCount')
+//   .get(function(){
+//     // todo return =something.length; 
+//     // ! not finished
+//   })
 
 
 const User = mongoose.model('user', userSchema);
