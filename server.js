@@ -1,12 +1,10 @@
 const express = require ('express');
-const mongodb = require('mongodb').MongoClient;
+const db = require('./config/connection');
 const routes = require('./routes');
 // const data = require('./models/data');
 
 const app = express();
 const port = 3001;
-
-let db;
 
 app.use(express.urlencoded({ extended: true}));
 app.use(express.json());

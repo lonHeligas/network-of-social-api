@@ -1,6 +1,6 @@
-const mongoose = require('mongoose');
+const { connect, connection } = require('mongoose');
 
-connect('localhost://127.0.0.1:27017/commentExample', {
+connect('localhost://127.0.0.1:27017/postSocialDB', {
   useNewUrlParser: true,
   useUnifiedTopology: true,
 });
