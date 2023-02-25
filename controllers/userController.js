@@ -3,7 +3,7 @@ const { ObjectId } = require('mongoose').Types;
 const User = require('../models');
 
 module.exports = {
-  // ? creates a new user
+  // * creates a new user
   createUser(req, res) {
     User.create(req.body) 
       .then((student) => res.json(student))
