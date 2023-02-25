@@ -8,22 +8,24 @@ module.exports = {
       .then((thoughtCurrent) => res.json(thoughtCurrent))
       .catch((err) => res.status(500).json(err));
   },
-  // ? get all thoughts
+  // * get all thoughts
   getAllThoughts(req, res) {
     Thought.find()
       .then((allThoughts) => res.json(allThoughts))
       .catch((err) => res.status(500).json(err));
   },
-  // ? get a single thought by ID
+  // * get a single thought by ID
   getSingleThought(req, res) {
-    Thought.findOne({ _id: req.params.thoughtId }).select("-__v");
-    then(async (thought) =>
+    Thought.findOne({ _id: req.params.thoughtId })
+    .select("-__v")
+    .then(async (thought) =>
       !thought
         ? res.status(404).json({ message: `No Thoughts with that ID` })
         : res.json({
             thought,
           })
-    ).catch((err) => {
+      )
+      .catch((err) => {
       console.log(err);
       return res.status(500).json(err);
     });
