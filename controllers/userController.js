@@ -5,7 +5,7 @@ const User = require('../models');
 module.exports = {
   // ? creates a new user
   createUser(req, res) {
-    User.create() 
+    User.create(req.body) 
       .then((student) => res.json(student))
       .catch((err) => res.status(500).json(err));
   },
