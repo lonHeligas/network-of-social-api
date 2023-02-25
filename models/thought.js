@@ -8,11 +8,6 @@ const thoughtSchema = new Schema(
       minLength: 1,
       maxLength: 280,
     },
-    reactionBody: {
-      type: String,
-      required: true,
-      maxLength: 280,
-    },
     createdAt: {
       type: Date,
       default: Date.now,
