@@ -11,7 +11,7 @@ const userSchema = new Schema(
       type: String,
       required: true,
       match: /.+\@.+\..+/,
-      // ^ holy crap this validation works!
+      // & holy crap this validation works!
       unique: true
     },
     thoughts: [
@@ -27,8 +27,21 @@ const userSchema = new Schema(
       }
     ]
   },
+  {
+    toJSON: {
+      virtuals: true,
+      },
+      id: false,
+  }
   
 );
+
+userSchema
+  .virtual('friendCount')
+  // TODO Getter
+  .get(function () {
+    return `${length.this.friends}`
+  })
 
 const User = model('user', userSchema);
 
