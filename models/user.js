@@ -12,7 +12,19 @@ const userSchema = new Schema(
       match: /.+\@.+\..+/,
       // ^ holy crap this validation works!
       unique: true
-    }
+    },
+    thoughts: [
+      {
+        type: Schema.Types.ObjectId,
+        ref: 'Thought',
+      }
+    ],
+    friends: [
+      {
+        type: Schema.Types.ObjectId,
+        ref: 'User',
+      }
+    ]
   }
 )
 

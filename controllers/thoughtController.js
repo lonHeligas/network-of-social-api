@@ -2,12 +2,31 @@ const { ObjectId } = require("mongoose").Types;
 const { User, Thought } = require("../models");
 
 module.exports = {
-  // * creates a new thought
+  // ^ creates a new thought but also see below
   createThought(req, res) {
-    Thought.create(req.body)
-      .then((thoughtCurrent) => res.json(thoughtCurrent))
+    Thought.create(req.body)    
+      .then((thought) => res.json(thought))
       .catch((err) => res.status(500).json(err));
   },
+
+
+
+  // TODO creates a new thought Must add the User ID AS WELL AS the Username
+  createThought(req, res) {
+    Thought.create(req.body)    
+      .then((thought) => 
+       res.json(thought))
+      .catch((err) => res.status(500).json(err));
+  
+  },
+
+
+
+
+
+
+
+
   // * get all thoughts
   getAllThoughts(req, res) {
     Thought.find()
