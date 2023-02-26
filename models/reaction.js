@@ -18,11 +18,8 @@ const reactionSchema = new Schema(
       type: Date,
       default: Date.now
     }
-
-
   }
 )
-
  const Reaction = model('reaction', reactionSchema);
 
  module.exports = Reaction;

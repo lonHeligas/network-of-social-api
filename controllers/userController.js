@@ -32,10 +32,10 @@ module.exports = {
       });
   },
 
-  // todo update a a single user by ID
+  // * update a a single user by ID
   updateUser(req, res) {
     User.findOneAndUpdate({ _id: req.params.userId }, req.body)
-      .then((user) => 
+      .then((user) =>
         !user
           ? res.status(404).json({ message: `No user with that id` })
           : res
@@ -51,11 +51,9 @@ module.exports = {
       .then((deletedUser) => {
         // console.log(deletedUser);
         return !deletedUser
-          ? res
-              .status(404)
-              .json({
-                message: "Ye cannot delete ye user. Ye user does not exist.",
-              })
+          ? res.status(404).json({
+              message: "Ye cannot delete ye user. Ye user does not exist.",
+            })
           : res
               .status(200)
               .json({ message: "User has been deleted. Have a nice day." });
@@ -65,4 +63,34 @@ module.exports = {
         res.status(500).json(err);
       });
   },
+
+  // * add a new friend to a user's friend list
+  addFriend(req, res) {
+    User.findOneAndUpdate(
+      { _id: req.params.userId }, {"$push": { friends: req.params.friendId }}
+    ).then((user) =>
+      !user
+        ? res.status(404).json({ message: `No user with that id` })
+        : res
+            .status(200)
+            .json({ message: `This user's information has been updated` })
+    )
+    .catch((err) => res.status(500).json(err))
+  },
+
+  // * remove a friend to a user's friend list
+  deleteFriend(req, res) {
+    User.findOneAndDelete(
+      { _id: req.params.userId }, {"$pull": { friends: req.params.friendId }}
+    ).then((user) =>
+      !user
+        ? res.status(404).json({ message: `No user with that id` })
+        : res
+            .status(200)
+            .json({ message: `This user's information has been updated` })
+    )
+    .catch((err) => res.status(500).json(err))
+  },
 };
+
+
