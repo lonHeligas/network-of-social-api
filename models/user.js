@@ -39,7 +39,7 @@ userSchema
   .virtual('friendCount')
   // TODO Getter
   .get(function () {
-    return `${length.this.friends}`
+    return `${this.friends.length}`
   })
 
 const User = model('user', userSchema);

@@ -35,7 +35,7 @@ thoughtSchema
   .virtual('reactionCount')
   // ? getter
   .get(function () {
-    return `something`
+    return `${reactions.length}`;
   })
 
 const Thought = model('thought', thoughtSchema);
