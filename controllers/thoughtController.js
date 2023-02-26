@@ -3,7 +3,7 @@ const { User, Thought } = require("../models");
 
 module.exports = {
 
-  // TODO creates a new thought Must add the User ID AS WELL AS the Username
+  // * creates a new thought
   createThought(req, res) {
     Thought.create(req.body)
       .then((thought) => {
@@ -84,9 +84,32 @@ module.exports = {
       });
   },
 
-
-
-
+//   // * creates a new reaction attached to a thought
+//   addReaction(req, res) {
+//     const newReaction = 
+//     Thought.findOneAndUpdate(
+//       { _id: req.params.thoughtId }, {"$push": { req.body }}
+      
+//       req.body)
+//       .then((thought) => {
+//         return User.findOneAndUpdate(
+//           { _id: req.body.userId },
+//           { $addToSet: { thoughts: thought._id } },
+//           { new: true }
+//         );
+//       })
+//       .then((User) =>
+//         !User
+//           ? res.status(404).json({
+//               message: "Thought created, but there is no user with that ID",
+//             })
+//           : res.json("Created the thought. Hooray!")
+//       )
+//       .catch((err) => {
+//         console.log(err);
+//         res.status(500).json(err);
+//       });
+//   },
 };
 
 
