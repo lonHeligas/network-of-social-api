@@ -84,7 +84,7 @@ module.exports = {
       });
   },
 
-//   // * creates a new reaction attached to a thought
+//   // TODO creates a new reaction attached to a thought
 //   addReaction(req, res) {
 //     const newReaction = 
 //     Thought.findOneAndUpdate(
