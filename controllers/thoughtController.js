@@ -52,7 +52,7 @@ module.exports = {
       });
   },
 
-  // *  update a a single user by ID
+  // *  update a a single thought by ID
   updateThought(req, res) {
     Thought.findOneAndUpdate({ _id: req.params.thoughtId }, req.body)
       .then((thought) =>
@@ -64,6 +64,28 @@ module.exports = {
       )
       .catch((err) => res.status(500).json(err));
   },
+
+  // * delete a single thought by ID
+  deleteThought(req, res) {
+    Thought.findOneAndDelete({ _id: req.params.thoughtId })
+      .then((deletedThought) => {
+        // console.log(deletedThought);
+        return !deletedThought
+          ? res.status(404).json({
+              message: "Ye cannot delete ye thought. Ye thought does not exist.",
+            })
+          : res
+              .status(200)
+              .json({ message: "Thought has been deleted. Have a nice day." });
+      })
+      .catch((err) => {
+        console.error(err);
+        res.status(500).json(err);
+      });
+  },
+
+
+
 
 };
 
