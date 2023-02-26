@@ -1,6 +1,7 @@
 # 8 NoSQL: Social Network API: Network of Social API
 
 [This is the repository for this challenge](https://github.com/lonHeligas/network-of-social-api)
+[This is the video walkthrough for this challenge](https://drive.google.com/file/d/1DNK5WwoAUTddYr_1z5eFhQyXoKKlHyQB/view?usp=share_link)
 
 ## Your Task
 
@@ -14,7 +15,7 @@ Because this application won’t be deployed, you’ll also need to create a wal
 
 ## my challenges
 
-
+Getting the reactions to link up with a single thought was difficult. So much so that I didn't get it done in time. I'll get that fixed for my next submission of this assignment. 
 
 
 
