@@ -33,18 +33,36 @@ module.exports = {
   },
 
   // todo update a a single user by ID
-
-
-  // ? delete a single user by ID Getting a 500 ISE but it IS deleting it.
-  deleteUser(req, res){
-    User.findOneAndDelete({ _id: req.params.userId })
-    // console.log(userId)
-      .then((user) =>
-        !user 
-          ? res.status(404).json({ message: 'That user ID does not exist'})
-          : User.deleteOne({ _id })
+  updateUser(req, res) {
+    User.findOneAndUpdate({ _id: req.params.userId }, req.body)
+      .then((user) => 
+        !user
+          ? res.status(404).json({ message: `No user with that id` })
+          : res
+              .status(200)
+              .json({ message: `This user's information has been updated` })
       )
-      .then(() => res.json({ message: 'User has been deleted. Have a nice day.'}))
       .catch((err) => res.status(500).json(err));
-  }
+  },
+
+  // * delete a single user by ID
+  deleteUser(req, res) {
+    User.findOneAndDelete({ _id: req.params.userId })
+      .then((deletedUser) => {
+        // console.log(deletedUser);
+        return !deletedUser
+          ? res
+              .status(404)
+              .json({
+                message: "Ye cannot delete ye user. Ye user does not exist.",
+              })
+          : res
+              .status(200)
+              .json({ message: "User has been deleted. Have a nice day." });
+      })
+      .catch((err) => {
+        console.error(err);
+        res.status(500).json(err);
+      });
+  },
 };
