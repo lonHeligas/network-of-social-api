@@ -25,8 +25,9 @@ const userSchema = new Schema(
         ref: 'User',
       }
     ]
-  }
-)
+  },
+  
+);
 
 const User = model('user', userSchema);
 
